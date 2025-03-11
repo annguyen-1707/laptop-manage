@@ -6,6 +6,8 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repoisitory.UserRepository;
 import vn.hoidanit.laptopshop.service.UserService;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,21 +24,30 @@ public class UserControlller {
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
+        List<User> users = this.userService.getAllUserByEmail("datsaker7124@gmail.com");
+        System.out.println(users);
         model.addAttribute("edric", "test");
         return "hello";
     }
 
     @RequestMapping("/admin/user")
     public String getUserPage(Model model) {
+        List<User> users = this.userService.getAllUsers();
+        model.addAttribute("users", users);
+        System.out.println(users);
+        return "admin/user/table-users";
+    }
+
+    @RequestMapping(value = "/admin/user/create") // GET
+    public String createUserPage(Model model) {
         model.addAttribute("newUser", new User());
-        return "admin/user/create";
+        return "/admin/user/create";
     }
 
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) {
-        System.out.println("Run here " + hoidanit);
         this.userService.handleSaveUser(hoidanit);
-        return "hello";
+        return "redirect:/admin/user";
     }
 
 }
