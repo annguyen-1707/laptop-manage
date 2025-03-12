@@ -27,4 +27,16 @@ public class UserService {
         return this.userRepository.findByEmail(email);
 
     }
+
+    public User getUserById(long id) {
+        return this.userRepository.findById(id).orElse(null);
+    }
+
+    public User updatUser(User user) {
+        return this.userRepository.save(user);
+    }
+
+    public void deleteUser(long id) {
+        this.userRepository.deleteById(id);
+    }
 }
