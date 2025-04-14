@@ -20,10 +20,13 @@ public class UploadService {
     }
 
     public String handleUploadFile(@RequestParam("annguyenFile") MultipartFile file, String targetFolder) {
+        // don't upload file
+        if (file.isEmpty()) {
+            return "";
+        }
+        // relative path: absolute path
         String rootPath = this.servletContext.getRealPath("/resources/images");
         String finalName = "";
-        // relative path: absolute path
-
         try {
             byte[] bytes = file.getBytes();
 

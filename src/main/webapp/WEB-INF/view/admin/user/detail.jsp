@@ -55,10 +55,9 @@
                         <h3>User detail with id = ${user.id}</h3>
                         <hr />
                         <div class="card" style="width: 60%">
-                            <div class="card-header">
-                                User information
-                            </div>
                             <ul class="list-group list-group-flush">
+                                <img src="/images/avatar/${user.avatar}" alt="Avatar" class="card-img-top"
+                                    id="avatarPreview">
                                 <li class="list-group-item">ID: ${user.id}</li>
                                 <li class="list-group-item">Email: ${user.email}</li>
                                 <li class="list-group-item">Full Name: ${user.fullName}</li>
