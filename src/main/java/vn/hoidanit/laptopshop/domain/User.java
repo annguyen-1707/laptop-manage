@@ -12,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import vn.hoidanit.laptopshop.service.validator.StrongPassword;
 import jakarta.validation.constraints.Email;
 
 @Entity
@@ -27,6 +28,7 @@ public class User {
 
     @NotNull
     @Size(min = 2, message = "Password must be at least 2 characters")
+    @StrongPassword(message = "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character")
     private String password;
 
     @NotNull

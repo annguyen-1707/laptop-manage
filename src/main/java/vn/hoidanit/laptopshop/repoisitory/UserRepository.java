@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findFirstByEmail(String email); // lấy 1 người đầu tiên có email đó
 
     User findTop1ByEmail(String email);// lấy 1 người đầu tiên có email đó
+
+    boolean existsByEmail(String email); // kiểm tra xem có tồn tại email đó hay không
 }

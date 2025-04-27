@@ -1,9 +1,15 @@
 package vn.hoidanit.laptopshop.domain.dto;
 
+import jakarta.validation.constraints.Email;
+import vn.hoidanit.laptopshop.service.validator.RegisterChecked;
+import vn.hoidanit.laptopshop.service.validator.StrongPassword;
+
+@RegisterChecked
 public class RegisterDTO {
     private String firstName;
     private String lastName;
     private String email;
+    @StrongPassword(message = "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character")
     private String password;
     private String confirmPassword;
 

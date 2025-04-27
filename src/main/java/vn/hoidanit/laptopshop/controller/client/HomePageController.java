@@ -1,23 +1,21 @@
 package vn.hoidanit.laptopshop.controller.client;
 
 import java.util.List;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.Role;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 import vn.hoidanit.laptopshop.service.ProductService;
 import vn.hoidanit.laptopshop.service.UserService;
-
-import org.springframework.web.bind.annotation.RequestParam;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomePageController {
@@ -59,15 +57,26 @@ public class HomePageController {
     }
 
     @PostMapping("/register")
-    public String getRegisterPage(@ModelAttribute("registerUser") RegisterDTO registerDTO, Model model) {
-        User user = userService.registerDToUser(registerDTO);
-        String hashPassword = this.passwordEncoder.encode(user.getPassword());
-        Role role = this.userService.getRoleByName("USER");
-        user.setPassword(hashPassword);
-        user.setRole(role);
-        this.userService.handleSaveUser(user);
-        // TODO: process POST request
-        return "redirect:/login";
+    public String getRegisterPage(
+            @ModelAttribute("registerUser") @Valid RegisterDTO registerDTO,
+            BindingResult BindingResult) {
+        List<FieldError> errors = BindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(error.getField() + " - " + error.getDefaultMessage());
+        }
+        // validate
+        if (BindingResult.hasErrors()) {
+            return "client/auth/register";
+        } else {
+            User user = userService.registerDToUser(registerDTO);
+            String hashPassword = this.passwordEncoder.encode(user.getPassword());
+            Role role = this.userService.getRoleByName("USER");
+            user.setPassword(hashPassword);
+            user.setRole(role);
+            this.userService.handleSaveUser(user);
+            // TODO: process POST request
+            return "redirect:/login";
+        }
     }
 
     @GetMapping(value = "/login")
