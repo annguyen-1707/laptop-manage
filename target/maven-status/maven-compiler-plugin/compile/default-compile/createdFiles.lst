@@ -1,9 +1,9 @@
 vn\hoidanit\laptopshop\controller\admin\UserController.class
+vn\hoidanit\laptopshop\controller\client\ItemController.class
 vn\hoidanit\laptopshop\domain\Role.class
 vn\hoidanit\laptopshop\config\SecurityConfiguration.class
 vn\hoidanit\laptopshop\controller\client\HomePageController.class
 vn\hoidanit\laptopshop\domain\Order_detail.class
-vn\hoidanit\laptopshop\controller\client\ProductController.class
 vn\hoidanit\laptopshop\controller\admin\OrderController.class
 vn\hoidanit\laptopshop\domain\Product.class
 vn\hoidanit\laptopshop\repoisitory\UserRepository.class
@@ -14,6 +14,7 @@ vn\hoidanit\laptopshop\service\UploadService.class
 vn\hoidanit\laptopshop\controller\admin\ProductController.class
 vn\hoidanit\laptopshop\domain\Order.class
 vn\hoidanit\laptopshop\config\WebMvcConfig.class
+vn\hoidanit\laptopshop\domain\dto\RegisterDTO.class
 vn\hoidanit\laptopshop\repoisitory\RoleRepository.class
 vn\hoidanit\laptopshop\domain\User.class
 vn\hoidanit\laptopshop\repoisitory\ProductRepository.class

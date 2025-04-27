@@ -21,4 +21,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAll(); // tìm tất cả sản phẩm
 
+    List<Product> findByFactory(String factory); // tìm kiếm sản phẩm theo hãng sản xuất
+
 }
