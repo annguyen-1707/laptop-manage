@@ -62,33 +62,28 @@
                             <div class="col-md-8 col-lg-6">
                                 <div class="card p-4">
                                     <h3 class="text-center mb-4">Login</h3>
-                                    <form:form method="post" action="/login" modelAttribute="loginUser">
-                                        <c:set var="emailError">
-                                            <form:errors path="email" cssClass="invalid-feedback" />
-                                        </c:set>
-                                        <c:set var="passError">
-                                            <form:errors path="password" cssClass="invalid-feedback" />
-                                        </c:set>
+                                    <form method="post" action="/login">
+                                        <c:if test="${param.error != null}">
+                                            <div class="my-2" style="color: red;">Invalid email or password.</div>
+                                        </c:if>
                                         <div class="row mb-3">
                                             <div class="mb-3">
-                                                <form:input type="email"
-                                                    class="form-control ${not empty emailError? 'is-invalid':''}"
-                                                    placeholder="Email address" path="email" required="required" />
-                                                ${emailError}
+                                                <input type="email" class="form-control" placeholder="Email address"
+                                                    required="required" name="username" />
                                             </div>
-                                            <div class="row mb-3">
-                                                <form:input type="password"
-                                                    class="form-control ${not empty passError? 'is-invalid':''}"
-                                                    placeholder="Password" path="password" required="required" />
-                                                ${passError}
-                                            </div>
+                                            <div class="mb-3">
+                                                <input type="password" class="form-control" placeholder="Password"
+                                                    required="required" name="password" />
+                                            </div> <input type="hidden" name="${_csrf.parameterName}"
+                                                value="${_csrf.token}" />
+
                                             <div class="d-grid mb-3">
                                                 <button type="submit" class="btn btn-primary">Login</button>
                                             </div>
                                             <div class="text-center text-muted">
                                                 <a href="client/auth/register">Need an account? Sign up</a>
                                             </div>
-                                    </form:form>
+                                    </form>
                                 </div>
                             </div>
                         </div>
