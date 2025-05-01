@@ -27,8 +27,7 @@ public class User {
     private String email;
 
     @NotNull
-    @Size(min = 2, message = "Password must be at least 2 characters")
-    @StrongPassword(message = "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character")
+    @Size(min = 3, message = "Password must be at least 3 characters")
     private String password;
 
     @NotNull

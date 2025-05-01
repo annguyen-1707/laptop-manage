@@ -11,11 +11,12 @@ import vn.hoidanit.laptopshop.domain.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User save(User hoidanit);
 
-    List<User> findByEmail(String email);
+    User findByEmail(String email);
 
     User findFirstByEmail(String email); // lấy 1 người đầu tiên có email đó
 
     User findTop1ByEmail(String email);// lấy 1 người đầu tiên có email đó
 
     boolean existsByEmail(String email); // kiểm tra xem có tồn tại email đó hay không
+
 }

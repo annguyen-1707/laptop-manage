@@ -72,10 +72,15 @@
                                         <c:set var="passConfirmError">
                                             <form:errors path="confirmPassword" cssClass="invalid-feedback" />
                                         </c:set>
+                                        <c:set var="nameError">
+                                            <form:errors path="firstName" cssClass="invalid-feedback" />
+                                        </c:set>
                                         <div class="row mb-3">
                                             <div class="col">
-                                                <form:input type="text" class="form-control" placeholder="First name"
-                                                    path="firstName" required="required" />
+                                                <form:input type="text"
+                                                    class="form-control ${not empty nameError? 'is-invalid':''}"
+                                                    placeholder="First name" path="firstName" required="required" />
+                                                ${nameError}
                                             </div>
                                             <div class="col">
                                                 <form:input type="text" class="form-control" placeholder="Last name"
