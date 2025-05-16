@@ -52,10 +52,10 @@
 
 
                                 <li class="nav-item border-top mt-auto pt-2">
-                                    <a class="nav-link" href="#">
-                                        <i class="bi-box-arrow-left me-2"></i>
-                                        Logout
-                                    </a>
+                                    <form method="post" action="/logout">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                        <button class="dropdown-item" href="#">Đăng xuất</button>
+                                    </form>
                                 </li>
                             </ul>
                         </div>

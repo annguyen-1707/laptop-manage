@@ -57,7 +57,44 @@ Bootstrap 5 Dashboard Admin Template
                             <li class="breadcrumb-item active" aria-current="page">Orders</li>
                         </ol>
                     </div>
-
+                    <div class=" mt-5">
+                        <div class="row">
+                            <div class=" col-12 mx-auto">
+                                <div class="d-flex justify-content-between">
+                                    <h3>Table Order</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <hr />
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>totalPrice</th>
+                                    <th>status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="order" items="${orders}">
+                                    <tr>
+                                        <td>${order.id}</td>
+                                        <td>${order.totalPrice}</td>
+                                        <td>${order.status}</td>
+                                        <td>
+                                            <a href="/admin/order/${order.id}">
+                                                <button class="btn btn-success">View</button> </a>
+                                            <a href="/admin/order/update/${order.id}">
+                                                <button class="btn btn-warning">Update</button></a>
+                                            <a href="/admin/order/delete/${order.id}">
+                                                <button class="btn btn-danger">Delete</button></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="dashboard-footer">
                         <jsp:include page="../layout/footer.jsp" />
                     </div>

@@ -96,7 +96,7 @@ public class UserController {
     public String updateUserPage(Model model, @PathVariable long id) {
         User user = this.userService.getUserById(id);
         model.addAttribute("newUser", user);
-        return "/admin/user/update";
+        return "admin/user/update";
     }
 
     @PostMapping(value = "/admin/user/update") // POST

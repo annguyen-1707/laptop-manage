@@ -14,6 +14,8 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 import vn.hoidanit.laptopshop.service.ProductService;
 import vn.hoidanit.laptopshop.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -29,8 +31,13 @@ public class HomePageController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @GetMapping(value = "/access-deny")
+    public String getDenyPage(Model model) {
+        return "client/auth/access-deny";
+    }
+
     @GetMapping(value = "/")
-    public String getHomePage(Model model) {
+    public String getHomePage(Model model, HttpServletRequest request) {
         List<Product> products = productService.getAllProducts();
         List<Product> asusProducts = productService.getProductByFactory("ASUS");
         List<Product> dellProducts = productService.getProductByFactory("DELL");
@@ -47,6 +54,7 @@ public class HomePageController {
         model.addAttribute("lenovoProducts", lenovoProducts);
         model.addAttribute("acerProducts", acerProducts);
 
+        HttpSession session = request.getSession(false);
         return "client/homepage/show";
     }
 

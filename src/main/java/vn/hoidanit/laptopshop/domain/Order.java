@@ -23,11 +23,51 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private String receiverName;
+    private String receiverPhone;
+    private String receiverAddress;
+    private String status;
+
     // 1 order -> many order_detail
     @OneToMany(mappedBy = "order")
-    private List<Order_detail> order_details;
+    private List<OrderDetail> order_details;
 
     public Order() {
+    }
+
+    public Order(long id, double totalPrice, User user, String receiverName, String receiverPhone,
+            String receiverAddress, String status) {
+        this.status = status;
+        this.id = id;
+        this.totalPrice = totalPrice;
+        this.user = user;
+        this.receiverName = receiverName;
+        this.receiverPhone = receiverPhone;
+        this.receiverAddress = receiverAddress;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
     }
 
     public long getId() {
@@ -44,6 +84,30 @@ public class Order {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<OrderDetail> getOrder_details() {
+        return order_details;
+    }
+
+    public void setOrder_details(List<OrderDetail> order_details) {
+        this.order_details = order_details;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

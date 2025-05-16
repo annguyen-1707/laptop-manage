@@ -43,7 +43,11 @@ public class Product {
 
     // 1 product -> many order_detail
     @OneToMany(mappedBy = "product")
-    private List<Order_detail> order_details;
+    private List<OrderDetail> order_details;
+
+    // 1 product -> many cart_detail
+    @OneToMany(mappedBy = "product")
+    private List<CartDetail> cartDetails;
 
     public Product() {
     }
