@@ -12,7 +12,6 @@ ShopBanDoDienTu.iml
 .idea
 .settings
 *.xml
-*.properties
 
 # Class Files #
 *.class
