@@ -34,7 +34,7 @@ Version Control: Git, GitHub 🌍
 
 1️⃣ Clone the repository
 
-$ git clone https://github.com/AnhDat0103/Laptop-Store-Java-Spring-MVC.git
+$ git clone https://github.com/annguyen-1707/laptop-manage.git
 $ cd Laptop-Store-Java-Spring-MVC
 
 2️⃣ Configure the Database
